@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1920" viewBox="0 0 1600 1920">
+<defs><marker id="tri" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto"><path d="M1 1L12 7L1 13Z" fill="white" stroke="#344e67"/></marker><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#344e67"/></marker><marker id="diamond" markerWidth="16" markerHeight="12" refX="1" refY="6" orient="auto"><path d="M1 6L8 1L15 6L8 11Z" fill="#344e67" stroke="#344e67"/></marker><marker id="openDiamond" markerWidth="16" markerHeight="12" refX="1" refY="6" orient="auto"><path d="M1 6L8 1L15 6L8 11Z" fill="white" stroke="#344e67"/></marker></defs>
+<rect width="1600" height="1920" fill="#f5f7fa"/>
+<g font-family="Arial, sans-serif" fill="#17324d"><text x="60" y="60" font-size="30" font-weight="bold">Sistema de Restaurante | UML - Unidade II</text>
+<text x="60" y="94" font-size="18">Java 20 - Grupo B - atributos e operações principais</text>
+<rect x="610" y="135" width="380" height="121" rx="5" fill="white" stroke="#61788e" stroke-width="1.5"/>
+<text x="800.0" y="157" text-anchor="middle" font-size="14">&lt;&lt;interface&gt;&gt;</text>
+<text x="800.0" y="182" text-anchor="middle" font-size="21" font-weight="bold">Calculavel</text>
+<path d="M610 195h380" stroke="#a9b6c4"/>
+<path d="M610 207h380" stroke="#a9b6c4"/>
+<text x="624" y="233" font-size="16">+ calcularValor(): double</text>
+<rect x="550" y="315" width="500" height="313" rx="5" fill="white" stroke="#61788e" stroke-width="1.5"/>
+<text x="800.0" y="337" text-anchor="middle" font-size="14">&lt;&lt;abstract&gt;&gt;</text>
+<text x="800.0" y="362" text-anchor="middle" font-size="21" font-weight="bold">Produto</text>
+<path d="M550 375h500" stroke="#a9b6c4"/>
+<text x="564" y="400" font-size="16">- nome: String</text>
+<text x="564" y="424" font-size="16">- preco: double</text>
+<text x="564" y="448" font-size="16">- disponivel: boolean</text>
+<path d="M550 459h500" stroke="#a9b6c4"/>
+<text x="564" y="485" font-size="16">+ getNome(): String; getPreco(): double</text>
+<text x="564" y="509" font-size="16">+ isDisponivel(): boolean</text>
+<text x="564" y="533" font-size="16">+ marcarDisponivel(): void</text>
+<text x="564" y="557" font-size="16">+ marcarIndisponivel(): void</text>
+<text x="564" y="581" font-size="16">+ getDescricao(): String {abstract}</text>
+<text x="564" y="605" font-size="16">+ calcularValor(): double {abstract}</text>
+<path d="M800 315V250" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#tri)" stroke-dasharray="7 5"/>
+<rect x="60" y="760" width="440" height="169" rx="5" fill="white" stroke="#61788e" stroke-width="1.5"/>
+<text x="280.0" y="807" text-anchor="middle" font-size="21" font-weight="bold">Prato</text>
+<path d="M60 820h440" stroke="#a9b6c4"/>
+<text x="74" y="845" font-size="16">- adicionalAcompanhamento: double</text>
+<path d="M60 856h440" stroke="#a9b6c4"/>
+<text x="74" y="882" font-size="16">+ calcularValor(): double</text>
+<text x="74" y="906" font-size="16">+ getDescricao(): String</text>
+<rect x="580" y="760" width="440" height="193" rx="5" fill="white" stroke="#61788e" stroke-width="1.5"/>
+<text x="800.0" y="807" text-anchor="middle" font-size="21" font-weight="bold">Bebida</text>
+<path d="M580 820h440" stroke="#a9b6c4"/>
+<text x="594" y="845" font-size="16">- volumeMl: int</text>
+<text x="594" y="869" font-size="16">- adicionalEmbalagem: double</text>
+<path d="M580 880h440" stroke="#a9b6c4"/>
+<text x="594" y="906" font-size="16">+ calcularValor(): double</text>
+<text x="594" y="930" font-size="16">+ getDescricao(): String</text>
+<rect x="1100" y="760" width="440" height="193" rx="5" fill="white" stroke="#61788e" stroke-width="1.5"/>
+<text x="1320.0" y="807" text-anchor="middle" font-size="21" font-weight="bold">Sobremesa</text>
+<path d="M1100 820h440" stroke="#a9b6c4"/>
+<text x="1114" y="845" font-size="16">- bolasExtras: int</text>
+<text x="1114" y="869" font-size="16">- precoBolaExtra: double</text>
+<path d="M1100 880h440" stroke="#a9b6c4"/>
+<text x="1114" y="906" font-size="16">+ calcularValor(): double</text>
+<text x="1114" y="930" font-size="16">+ getDescricao(): String</text>
+<path d="M280 760V710H800V628" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#tri)"/>
+<path d="M800 760V628" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#tri)"/>
+<path d="M1320 760V710H800V628" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#tri)"/>
+<text x="60" y="1030" font-size="25" font-weight="bold">Pedidos e atendimento</text>
+<rect x="60" y="1080" width="460" height="337" rx="5" fill="white" stroke="#61788e" stroke-width="1.5"/>
+<text x="290.0" y="1127" text-anchor="middle" font-size="21" font-weight="bold">Restaurante</text>
+<path d="M60 1140h460" stroke="#a9b6c4"/>
+<text x="74" y="1165" font-size="16">- mesas: Mesa[]; produtos: Produto[]</text>
+<text x="74" y="1189" font-size="16">- pedidos: Pedido[]</text>
+<text x="74" y="1213" font-size="16">- quantidadeMesas: int</text>
+<text x="74" y="1237" font-size="16">- quantidadeProdutos: int</text>
+<text x="74" y="1261" font-size="16">- quantidadePedidos: int</text>
+<path d="M60 1272h460" stroke="#a9b6c4"/>
+<text x="74" y="1298" font-size="16">+ cadastrarMesas(Mesa): void</text>
+<text x="74" y="1322" font-size="16">+ cadastrarProduto(Produto): void</text>
+<text x="74" y="1346" font-size="16">+ abrirPedido(Mesa, Cliente): Pedido</text>
+<text x="74" y="1370" font-size="16">+ consultarMesasDisponiveis(): Mesa[]</text>
+<text x="74" y="1394" font-size="16">+ getMesas/Produtos/Pedidos(): arrays</text>
+<rect x="590" y="1080" width="460" height="337" rx="5" fill="white" stroke="#61788e" stroke-width="1.5"/>
+<text x="820.0" y="1102" text-anchor="middle" font-size="14">Calculavel</text>
+<text x="820.0" y="1127" text-anchor="middle" font-size="21" font-weight="bold">Pedido</text>
+<path d="M590 1140h460" stroke="#a9b6c4"/>
+<text x="604" y="1165" font-size="16">- mesa: Mesa; cliente: Cliente</text>
+<text x="604" y="1189" font-size="16">- itens: ItemPedido[]</text>
+<text x="604" y="1213" font-size="16">- quantidadeItens: int; finalizado: boolean</text>
+<path d="M590 1224h460" stroke="#a9b6c4"/>
+<text x="604" y="1250" font-size="16">+ adicionarProduto(Produto, int): void</text>
+<text x="604" y="1274" font-size="16">+ calcularValor(): double</text>
+<text x="604" y="1298" font-size="16">+ calcularTotal(): double</text>
+<text x="604" y="1322" font-size="16">+ calcularTotalRecursivo(): double</text>
+<text x="604" y="1346" font-size="16">- somarItens(int): double</text>
+<text x="604" y="1370" font-size="16">+ finalizarPedido(): void</text>
+<text x="604" y="1394" font-size="16">+ getItens(): ItemPedido[]</text>
+<rect x="1130" y="1080" width="410" height="241" rx="5" fill="white" stroke="#61788e" stroke-width="1.5"/>
+<text x="1335.0" y="1102" text-anchor="middle" font-size="14">Calculavel</text>
+<text x="1335.0" y="1127" text-anchor="middle" font-size="21" font-weight="bold">ItemPedido</text>
+<path d="M1130 1140h410" stroke="#a9b6c4"/>
+<text x="1144" y="1165" font-size="16">- produto: Produto</text>
+<text x="1144" y="1189" font-size="16">- quantidade: int</text>
+<path d="M1130 1200h410" stroke="#a9b6c4"/>
+<text x="1144" y="1226" font-size="16">+ calcularValor(): double</text>
+<text x="1144" y="1250" font-size="16">+ calcularSubtotal(): double</text>
+<text x="1144" y="1274" font-size="16">+ getProduto(): Produto</text>
+<text x="1144" y="1298" font-size="16">+ getQuantidade(): int</text>
+<rect x="60" y="1540" width="430" height="217" rx="5" fill="white" stroke="#61788e" stroke-width="1.5"/>
+<text x="275.0" y="1587" text-anchor="middle" font-size="21" font-weight="bold">Mesa</text>
+<path d="M60 1600h430" stroke="#a9b6c4"/>
+<text x="74" y="1625" font-size="16">- numero: int; capacidade: int</text>
+<text x="74" y="1649" font-size="16">- disponivel: boolean</text>
+<path d="M60 1660h430" stroke="#a9b6c4"/>
+<text x="74" y="1686" font-size="16">+ getNumero/Capacidade(): int</text>
+<text x="74" y="1710" font-size="16">+ isDisponivel(): boolean</text>
+<text x="74" y="1734" font-size="16">~ ocuparMesa/liberarMesa(): void</text>
+<rect x="590" y="1540" width="460" height="193" rx="5" fill="white" stroke="#61788e" stroke-width="1.5"/>
+<text x="820.0" y="1587" text-anchor="middle" font-size="21" font-weight="bold">Cliente</text>
+<path d="M590 1600h460" stroke="#a9b6c4"/>
+<text x="604" y="1625" font-size="16">- nome: String; cpf: String</text>
+<text x="604" y="1649" font-size="16">- telefone: String</text>
+<path d="M590 1660h460" stroke="#a9b6c4"/>
+<text x="604" y="1686" font-size="16">+ getNome(): String</text>
+<text x="604" y="1710" font-size="16">+ getCpf/Telefone(): String</text>
+<rect x="1130" y="1540" width="410" height="241" rx="5" fill="white" stroke="#61788e" stroke-width="1.5"/>
+<text x="1335.0" y="1587" text-anchor="middle" font-size="21" font-weight="bold">Main</text>
+<path d="M1130 1600h410" stroke="#a9b6c4"/>
+<text x="1144" y="1625" font-size="16">- restaurante: Restaurante</text>
+<text x="1144" y="1649" font-size="16">- entrada: Scanner</text>
+<path d="M1130 1660h410" stroke="#a9b6c4"/>
+<text x="1144" y="1686" font-size="16">+ main(String[]): void</text>
+<text x="1144" y="1710" font-size="16">- menu(): void</text>
+<text x="1144" y="1734" font-size="16">- demonstrar(): void</text>
+<text x="1144" y="1758" font-size="16">+ conta(Pedido): void</text>
+<path d="M520 1150H590" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#arrow)" marker-start="url(#openDiamond)"/>
+<text x="526" y="1135" font-size="16" fill="#344e67">1     0..*</text>
+<path d="M1050 1150H1130" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#arrow)" marker-start="url(#diamond)"/>
+<text x="1056" y="1135" font-size="16" fill="#344e67">1     0..*</text>
+<path d="M200 1080V1010H25V470H550" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#arrow)" marker-start="url(#openDiamond)"/>
+<text x="70" y="1005" font-size="16" fill="#344e67">cadastra Produto: 1 / 0..*</text>
+<path d="M200 1417V1540" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#arrow)" marker-start="url(#openDiamond)"/>
+<text x="210" y="1515" font-size="16" fill="#344e67">1 / 0..*</text>
+<path d="M590 1410H550V1520H490V1635" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="425" y="1509" font-size="16" fill="#344e67">0..* / 1</text>
+<path d="M820 1417V1540" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="830" y="1523" font-size="16" fill="#344e67">0..* / 0..1</text>
+<path d="M1335 1080V1000H1570V470H1050" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1160" y="995" font-size="16" fill="#344e67">0..* itens / 1 Produto</text>
+<path d="M1335 1540V1515H1090V1055H300V1080" fill="none" stroke="#344e67" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="7 5"/>
+<text x="60" y="1820" font-size="17">Legenda: triângulo vazio = herança; tracejado + triângulo = realização; losango cheio = composição;</text>
+<text x="60" y="1848" font-size="17">losango vazio = agregação; seta = associação; linha tracejada = dependência; + público, - privado, ~ pacote.</text>
+<text x="60" y="1880" font-size="16">Pedido e ItemPedido realizam Calculavel (indicado nos cabeçalhos). Main utiliza Restaurante e Calculavel.</text>
+</g></svg>
