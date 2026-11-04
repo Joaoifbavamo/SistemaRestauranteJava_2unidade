@@ -53,6 +53,12 @@ Cadastro de mesas e produtos; disponibilidade do cardápio; cliente opcional; ab
 | Documento breve | [Documentação](docs/DOCUMENTACAO.md) |
 | Evolução da Unidade I | [Rastreabilidade](docs/EVOLUCAO.md) e fontes originais em `docs/unidade-I/` |
 
+`Produto` é abstrata porque reúne nome, preço e disponibilidade, mas cada categoria define seu próprio `calcularValor()` e `getDescricao()`. `Prato`, `Bebida` e `Sobremesa` usam `extends Produto`. `Calculavel` define um único método: `double calcularValor()`. Produto, item e pedido realizam esse contrato de maneiras diferentes.
+
+No pedido, `ItemPedido` mantém uma referência do tipo `Produto`. Ao executar `produto.calcularValor()`, Java escolhe o método da subclasse concreta. Assim, o subtotal considera o adicional do prato, da bebida ou da sobremesa sem testar qual é a classe do objeto.
+
+O método `Pedido.somarItens(int indice)` para quando `indice >= quantidadeItens` e retorna `0`. Caso contrário, soma o subtotal da posição atual com `somarItens(indice + 1)`. Para os itens da demonstração: `60 + (10 + (18 + 0)) = 88`. O método `calcularValor()` do pedido usa essa soma recursiva.
+
 ## Demonstração reproduzível
 
 | Produto | Regra de valor unitário | Quantidade | Subtotal |
@@ -76,8 +82,136 @@ test/restaurante/             Testes
 docs/                        Documentacao, UML e fontes da Unidade I
 ```
 
++
+## Diagrama de classes UML completo
+
+O diagrama abaixo está aqui no README para facilitar a avaliação. Inclui a classe abstrata, as subclasses, a interface, os atributos e métodos principais, as associações e suas cardinalidades.
+
+```mermaid
+classDiagram
+direction TB
+class Calculavel {
+  <<interface>>
+  +calcularValor() double
+}
+class Produto {
+  <<abstract>>
+  -String nome
+  -double preco
+  -boolean disponivel
+  +getNome() String
+  +getPreco() double
+  +isDisponivel() boolean
+  +marcarDisponivel() void
+  +marcarIndisponivel() void
+  +getDescricao() String*
+  +calcularValor() double*
+}
+class Prato {
+  -double adicionalAcompanhamento
+  +calcularValor() double
+  +getDescricao() String
+}
+class Bebida {
+  -int volumeMl
+  -double adicionalEmbalagem
+  +calcularValor() double
+  +getDescricao() String
+}
+class Sobremesa {
+  -int bolasExtras
+  -double precoBolaExtra
+  +calcularValor() double
+  +getDescricao() String
+}
+class Cliente {
+  -String nome
+  -String cpf
+  -String telefone
+  +getNome() String
+  +getCpf() String
+  +getTelefone() String
+}
+class Mesa {
+  -int numero
+  -int capacidade
+  -boolean disponivel
+  +getNumero() int
+  +getCapacidade() int
+  +isDisponivel() boolean
+  ~ocuparMesa() void
+  ~liberarMesa() void
+}
+class ItemPedido {
+  -Produto produto
+  -int quantidade
+  +getProduto() Produto
+  +getQuantidade() int
+  +calcularSubtotal() double
+  +calcularValor() double
+}
+class Pedido {
+  -Mesa mesa
+  -Cliente cliente
+  -ItemPedido[] itens
+  -int quantidadeItens
+  -boolean finalizado
+  +adicionarProduto(Produto, int) void
+  +calcularTotal() double
+  +calcularTotalRecursivo() double
+  -somarItens(int) double
+  +calcularValor() double
+  +finalizarPedido() void
+  +getItens() ItemPedido[]
+  +isFinalizado() boolean
+}
+class Restaurante {
+  -Mesa[] mesas
+  -Produto[] produtos
+  -Pedido[] pedidos
+  -int quantidadeMesas
+  -int quantidadeProdutos
+  -int quantidadePedidos
+  +cadastrarMesas(Mesa) void
+  +cadastrarProduto(Produto) void
+  +abrirPedido(Mesa) Pedido
+  +abrirPedido(Mesa, Cliente) Pedido
+  +consultarMesasDisponiveis() Mesa[]
+  +getMesas() Mesa[]
+  +getProdutos() Produto[]
+  +getPedidos() Pedido[]
+}
+class Main {
+  +main(String[]) void
+  -menu() void
+  -demonstrar() void
+  +conta(Pedido) void
+}
+Calculavel <|.. Produto
+Calculavel <|.. ItemPedido
+Calculavel <|.. Pedido
+Produto <|-- Prato
+Produto <|-- Bebida
+Produto <|-- Sobremesa
+Restaurante "1" o-- "0..*" Mesa : cadastra
+Restaurante "1" o-- "0..*" Produto : cadastra
+Restaurante "1" o-- "0..*" Pedido : registra
+Pedido "1" *-- "0..*" ItemPedido : contem
+ItemPedido "0..*" --> "1" Produto : referencia
+Pedido "0..*" --> "1" Mesa : atendimento
+Pedido "0..*" --> "0..1" Cliente : identifica
+Main ..> Restaurante : utiliza
+Main ..> Calculavel : calcula
+```
+
+Um pedido contém zero ou mais itens e referencia uma mesa; o cliente é opcional. A mesa pode ter pedidos históricos diferentes, com apenas um atendimento aberto por vez. A fonte editável também está em [diagrama-classes.mmd](docs/diagrama-classes.mmd).
+
 ## Limites do projeto
 
-Os dados permanecem apenas na memória durante a execução. Valores usam `double`, preservando a base didática da Unidade I; a apresentação monetária arredonda para duas casas. Um sistema financeiro de produção deve usar `BigDecimal` e uma política de arredondamento explícita. A recursão tem profundidade proporcional à quantidade de itens e foi escolhida para o exercício acadêmico; pedidos enormes podem exceder a pilha da JVM. A demonstração utiliza dados fictícios e não valida CPF.
+Os dados permanecem apenas na memória durante a execução. Valores usam `double`, como na Unidade I. A recursão percorre os itens efetivamente incluídos no pedido. A demonstração utiliza dados fictícios.
+
+## Dificuldades e decisões
+
+As principais dificuldades da evolução foram tornar `Produto` abstrato sem duplicar os dados comuns, passar a calcular o subtotal pelo valor final de cada subclasse, manter os arrays nativos e fazer a recursão parar na quantidade de itens ocupados, não no tamanho total do array. Também foi preciso impedir que um pedido finalizado alterasse seus itens ou liberasse uma mesa ocupada por um atendimento posterior. Este registro descreve decisões do código; durante a apresentação, cada integrante deve relatar as atividades e dificuldades que realmente teve.
 
 O PDF com o roteiro da apresentação é entregue separadamente e está excluído do Git por `.gitignore`. A equipe deve ajustar a declaração de participação conforme o trabalho que cada integrante efetivamente realizou, gravar o vídeo e inserir o link do YouTube na entrega da disciplina.
