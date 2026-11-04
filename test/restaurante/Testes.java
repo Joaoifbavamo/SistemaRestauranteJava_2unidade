@@ -4,7 +4,6 @@ import restaurante.contrato.Calculavel;
 import restaurante.modelo.*;
 import restaurante.servico.Restaurante;
 
-/** Testes executaveis com Java 20, sem dependencias externas. */
 public final class Testes {
     private static int verificacoes;
     public static void main(String[] args) {

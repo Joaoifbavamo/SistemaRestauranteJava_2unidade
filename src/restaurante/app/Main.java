@@ -7,7 +7,6 @@ import restaurante.contrato.Calculavel;
 import restaurante.modelo.*;
 import restaurante.servico.Restaurante;
 
-/** Interface de console: sem argumentos abre menu; --demo executa roteiro reproduzivel. */
 public final class Main {
     private static final NumberFormat MOEDA = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("pt-BR"));
     private final Restaurante restaurante = new Restaurante();
@@ -163,7 +162,7 @@ public final class Main {
         pedido.adicionarProduto(cardapio[0], 2);
         pedido.adicionarProduto(cardapio[1], 1);
         pedido.adicionarProduto(cardapio[2], 1);
-        conta(pedido); // 60 + 10 + 18 = 88.
+        conta(pedido);
         System.out.println("\n2. REGRAS DE NEGOCIO");
         tentar("Mesa ocupada", () -> restaurante.abrirPedido(mesa));
         cardapio[1].marcarIndisponivel();

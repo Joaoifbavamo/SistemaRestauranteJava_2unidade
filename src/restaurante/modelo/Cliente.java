@@ -1,6 +1,5 @@
 package restaurante.modelo;
 
-/** Dados do cliente preservados da Unidade I; sem validacao cadastral de CPF. */
 public class Cliente {
     private final String nome;
     private final String cpf;

@@ -25,7 +25,6 @@ public class Pedido implements Calculavel {
         if (quantidadeItens == itens.length) itens = Arrays.copyOf(itens, itens.length * 2);
         itens[quantidadeItens++] = item;
     }
-    /** Versao iterativa preservada para comparacao didatica. */
     public double calcularTotal() {
         double total = 0;
         for (int i = 0; i < quantidadeItens; i++) total += itens[i].calcularSubtotal();
@@ -33,10 +32,9 @@ public class Pedido implements Calculavel {
     }
     public double calcularTotalRecursivo() { return somarItens(0); }
     private double somarItens(int indice) {
-        if (indice >= quantidadeItens) return 0.0; // Condicao de parada.
+        if (indice >= quantidadeItens) return 0.0;
         return itens[indice].calcularSubtotal() + somarItens(indice + 1);
     }
-    /** A conta real do pedido utiliza a recursao. */
     @Override public double calcularValor() { return calcularTotalRecursivo(); }
     public void finalizarPedido() {
         if (finalizado) throw new IllegalStateException("Pedido ja finalizado.");

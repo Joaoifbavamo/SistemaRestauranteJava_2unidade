@@ -2,7 +2,6 @@ package restaurante.modelo;
 
 import restaurante.contrato.Calculavel;
 
-/** Generalizacao dos produtos do cardapio da Unidade I. */
 public abstract class Produto implements Calculavel {
     private final String nome;
     private final double preco;
@@ -22,7 +21,6 @@ public abstract class Produto implements Calculavel {
     }
 
     public String getNome() { return nome; }
-    /** Preco base; o valor de venda e obtido por calcularValor(). */
     public double getPreco() { return preco; }
     public boolean isDisponivel() { return disponivel; }
     public void marcarIndisponivel() { disponivel = false; }

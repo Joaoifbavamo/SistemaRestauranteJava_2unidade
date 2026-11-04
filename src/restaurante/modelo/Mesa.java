@@ -13,7 +13,6 @@ public class Mesa {
     public int getNumero() { return numero; }
     public int getCapacidade() { return capacidade; }
     public boolean isDisponivel() { return disponivel; }
-    // Apenas o ciclo de vida de Pedido altera a ocupacao.
     void ocuparMesa() {
         if (!disponivel) throw new IllegalStateException("Mesa ja ocupada.");
         disponivel = false;

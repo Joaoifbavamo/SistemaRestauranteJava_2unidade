@@ -16,7 +16,6 @@ public final class ItemPedido implements Calculavel {
     public int getQuantidade() { return quantidade; }
     public double calcularSubtotal() { return calcularValor(); }
     @Override public double calcularValor() {
-        // Despacho dinamico: a subclasse do produto define seu preco de venda.
         return produto.calcularValor() * quantidade;
     }
 }

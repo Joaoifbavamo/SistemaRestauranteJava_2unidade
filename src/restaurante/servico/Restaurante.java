@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Objects;
 import restaurante.modelo.*;
 
-/** Gerencia os cadastros em arrays nativos com crescimento automatico. */
 public class Restaurante {
     private Mesa[] mesas = new Mesa[10];
     private Produto[] produtos = new Produto[10];
